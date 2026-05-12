@@ -1,0 +1,174 @@
+.assistant-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.assistant-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  height: calc(100vh - 180px);
+  min-height: 500px;
+}
+
+@media (min-width: 1024px) {
+  .assistant-content {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.chat-section {
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.messages-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 0.5rem;
+}
+
+.messages-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-list::-webkit-scrollbar-thumb {
+  background: var(--surface-hover);
+  border-radius: 10px;
+}
+
+.message-bubble {
+  max-width: 80%;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  line-height: 1.5;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-bubble.assistant {
+  background-color: var(--surface-hover);
+  color: var(--text-primary);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.message-bubble.user {
+  background-color: var(--accent-color);
+  color: #0f172a;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.control-section {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.visualizer-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-visualizer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform 0.1s ease-out, background 0.3s;
+  box-shadow: var(--shadow-lg);
+}
+
+.mic-visualizer.active {
+  background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+}
+
+.mic-icon {
+  color: white;
+}
+
+.mic-icon.muted {
+  color: var(--text-secondary);
+}
+
+.ripple-waves {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.wave {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  opacity: 0;
+  animation: ripple 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.wave.w2 { animation-delay: 0.6s; }
+.wave.w3 { animation-delay: 1.2s; }
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.status-text {
+  font-weight: 500;
+  color: var(--text-secondary);
+  height: 24px;
+}
+
+.text-success { color: var(--success-color); }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+
+.connect-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.btn-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
